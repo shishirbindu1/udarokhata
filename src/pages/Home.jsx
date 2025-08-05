@@ -1,10 +1,7 @@
 import React from "react";
-
+import userData from "../features/userdata";
 const Home = () => {
-  const date = new Date()
-  const cleareBy =()=>{
-
-  }
+  const cleareBy = () => {};
   return (
     <div className="wrapper grid grid-cols-4 bg-gray-100 p-5 h-screen">
       <div className="nav py-5 bg-gray-50 flex flex-col col-span-1">
@@ -25,12 +22,14 @@ const Home = () => {
         </h1>
         <div className="customers w-full ">
           <h2 className="text-lg bg-gray-200 pl-5">list of customers</h2>
-          <div className="one bg-white grid grid-flow-col mt-5">
-            <div className="name">Purnima</div>
-            <div className="dueamount text-[#ff0000]">-5000</div>
-            <div className="lastActiveDate">{date.toLocaleDateString()}</div>
-            <div className="clearedBy">04/08/2025</div>
-          </div>
+          {userData.map((user, index) => (
+            <div className="one bg-white grid grid-flow-col mt-5 pl-2" key={index}>
+              <div className="name">{user.name}</div>
+              <div className="dueamount text-[#ff0000]">{user.dueamt}</div>
+              <div className="lastActiveDate">{user.date}</div>
+              <div className="clearedBy">04/08/2025</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
